@@ -1,0 +1,34 @@
+name: pysubsurface
+channels:
+- defaults
+- conda-forge
+dependencies:
+- python>=3.6.4
+- pip
+- numpy>=1.15.0
+- scipy
+- matplotlib
+- pandas
+- seaborn
+- scikit-learn
+- pylops
+- verde
+- ipython
+- jupyter
+- pytest
+- pytest-runner
+- numpydoc
+- pip:
+  - lasio
+  - segyio
+  - matplotlib-scalebar
+  - shapely
+  - descartes
+  - pyyaml
+  - Deprecated
+  - Sphinx==1.7.8
+  - sphinx-rtd-theme==0.4.1
+  - sphinx-gallery==0.2.0
+  - nbsphinx
+  - image
+  - git+https://github.com/cjohnson318/geostatsmodels.git
