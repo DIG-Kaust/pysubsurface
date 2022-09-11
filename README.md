@@ -36,4 +36,4 @@ make test
 ```
 
 ## Contributors
-* Matteo Ravasi (mrava@equinor.com)
+* Matteo Ravasi (matteo.ravasi@kaust.edu.sa)
