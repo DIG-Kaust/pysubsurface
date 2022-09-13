@@ -14,11 +14,11 @@ from pysubsurface.utils.utils import findclosest, unique_pairs, change_name_for_
 from pysubsurface.utils.stats import covariance, drawsamples
 from pysubsurface.utils.units import *
 from pysubsurface.objects.utils import _findclosest_well_seismicsections
-from pysubsurface.objects.Intervals import Intervals
-from pysubsurface.objects.Picks import Picks
-from pysubsurface.objects.Trajectory import Trajectory
-from pysubsurface.objects.TDcurve import TDcurve
-from pysubsurface.objects.Logs import _filters_curves, _visualize_facies, Logs
+from pysubsurface.objects.intervals import Intervals
+from pysubsurface.objects.picks import Picks
+from pysubsurface.objects.trajectory import Trajectory
+from pysubsurface.objects.tdcurve import TDcurve
+from pysubsurface.objects.logs import _filters_curves, _visualize_facies, Logs
 from pysubsurface.proc.seismicmod.poststack import zerooffset_wellmod, timeshift
 from pysubsurface.proc.rockphysics.solid import Matrix, Rock
 from pysubsurface.proc.rockphysics.fluid import Fluid

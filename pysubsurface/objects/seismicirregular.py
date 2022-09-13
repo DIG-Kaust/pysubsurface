@@ -1,13 +1,10 @@
-from shutil import copyfile
-
-import os
-import segyio
-
 import numpy as np
+import segyio
 import matplotlib.pyplot as plt
 
+from shutil import copyfile
 from segyio.tracefield import TraceField as stf
-from pysubsurface.objects.Seismic import Seismic
+from pysubsurface.objects.seismic import Seismic
 
 
 def _segyinfo(filename, iline=189, xline=193, level=2):
@@ -99,7 +96,7 @@ class SeismicIrregular(Seismic):
     """
     def __init__(self, filename, iline=189, xline=193, cdpy=185, cdpx=181,
                  tzfirst=False, taxis=True, scale=1, loadcube=True,
-                 kind='local', ads=None, verb=False):
+                 kind='local', verb=False):
         self.filename = filename
         self._iline = iline
         self._xline = xline
@@ -144,7 +141,7 @@ class SeismicIrregular(Seismic):
             with segyio.open(self.filename, "r", ignore_geometry=True) as f:
                 # time axis
                 self.tz = f.samples
-                self.dtz = f.samples[1]- f.samples[0] # sampling in msec / m
+                self.dtz = f.samples[1] - f.samples[0] # sampling in msec / m
                 self.ntz = len(f.samples)
 
                 # extract geometry
@@ -232,7 +229,7 @@ class SeismicIrregular(Seismic):
                                    for traceread in
                                    traceindexes_sub[traces_available]])
             data[iil_sub[traces_available],
-                      ixl_sub[traces_available]] = tracesread
+                 ixl_sub[traces_available]] = tracesread
             data = data*self._scale
 
             if self._tzfirst:
@@ -444,3 +441,90 @@ class SeismicIrregular(Seismic):
 
         slice = self.data[:, :, itz]
         return slice
+
+    #########
+    # Viewers
+    #########
+    def view_cdpslice(self, ax=None, tzplot=-1, scale=1.,
+                      clip=1., clim=[], cmap='seismic', cbar=False,
+                      subsample=1, figsize=(20, 6), title=None, savefig=None):
+        """Quick visualization of depth/time slice of Seismic object.
+
+        Parameters
+        ----------
+        ax : :obj:`plt.axes`, optional
+            Axes handle (if ``None`` draw a new figure)
+        tzplot : :obj:`int`, optional
+            Index of time/depth slice to plot
+            (if ``None`` show slice in the middle )
+        scale : :obj:`float`, optional
+             Apply scaling to data when showing it
+        clip : :obj:`float`, optional
+             Clip to apply to colorbar limits (``vmin`` and ``vmax``)
+        clim : :obj:`float`, optional
+             Colorbar limits (if ``None`` infer from data and
+             apply ``clip`` to those)
+        cmap : :obj:`str`, optional
+             Colormap
+        cbar : :obj:`bool`, optional
+             Show colorbar
+        subsample : :obj:`str`, optional
+             Subsampling factor for scatterplot
+        figsize : :obj:`tuple`, optional
+             Size of figure
+        title : :obj:`str`, optional
+             Title of figure
+        savefig : :obj:`str`, optional
+             Figure filename, including path of location where to save plot
+             (if ``None``, figure is not saved)
+
+        Returns
+        -------
+        fig : :obj:`plt.figure`
+            Figure handle (``None`` if ``axs`` are passed by user)
+        axs : :obj:`plt.axes`
+            Axes handles
+
+        """
+        # load data if not done already
+        tzplot = self.ntz // 2 if tzplot == -1 else tzplot
+        if not self._loadcube:
+            slice = scale * self.read_slice(tzplot)
+        else:
+            slice = scale * self.data[..., tzplot]
+
+        # extract only live traces
+        iil = self.IIL.flatten()
+        ixl = self.IXL.flatten()
+        traceindexes = self.traceindeces.flatten()
+        traces_available = np.logical_not(np.isnan(traceindexes))
+        slice = slice[iil[traces_available],
+                      ixl[traces_available]]
+
+        print(slice.shape, self.cdpx[::subsample])
+
+        if len(clim) == 0:
+            clim = [-clip * np.nanmax(np.abs(slice)),
+                    clip * np.nanmax(np.abs(slice))]
+
+        # display seismic
+        if ax is None:
+            fig, ax = plt.subplots(1, 1, figsize=figsize)
+        else:
+            fig = None
+
+        im = ax.scatter(self.cdpx[::subsample], self.cdpy[::subsample],
+                        c=slice[::subsample], edgecolor='none',
+                        cmap=cmap, vmax=clim[1], vmin=clim[0])
+        ax.set_xlabel('World X')
+        ax.set_ylabel('World Y')
+        if title is not None:
+            ax.set_title('{0} (tz={1:.1f})'.format(title, self.tz[tzplot]),
+                         weight='bold')
+        ax.axis('equal')
+        if cbar:
+            plt.colorbar(im, ax=ax)
+
+        if savefig is not None:
+            fig.savefig(savefig, dpi=300, bbox_inches='tight')
+        return fig, ax

@@ -1,19 +1,19 @@
-from .Slice import Slice
-from .Cube import Cube
+from .slice import Slice
+from .cube import Cube
 
-from .Project import Project
-from .Intervals import Intervals
-from .Well import Well
-from .Seismic import Seismic
-from .SeismicIrregular import SeismicIrregular
-from .PrestackSeismic import PrestackSeismic
-from .Surface import Surface, SurfacePair
+from .project import Project
+from .intervals import Intervals
+from .well import Well
+from .seismic import Seismic
+from .seismicirregular import SeismicIrregular
+from .prestackseismic import PrestackSeismic
+from .surface import Surface, SurfacePair
 from .interpretation import Interpretation, Ensemble
-from .Fault import Fault
-from .Logs import Logs
-from .Picks import Picks
-from .Trajectory import Trajectory
-from .TDcurve import TDcurve
-from .Polygon import Polygon
-from .PolygonSet import PolygonSet
-from .Facies import Facies
+from .fault import Fault
+from .logs import Logs
+from .picks import Picks
+from .trajectory import Trajectory
+from .tdcurve import TDcurve
+from .polygon import Polygon
+from .polygonset import PolygonSet
+from .facies import Facies

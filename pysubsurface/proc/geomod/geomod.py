@@ -6,7 +6,7 @@ import verde as vd
 from scipy.interpolate import Rbf
 from sklearn.gaussian_process import GaussianProcessRegressor
 
-from pysubsurface.objects.Surface import _fillgrid
+from pysubsurface.objects.surface import _fillgrid
 from pysubsurface.visual.cmap import *
 
 

@@ -5,7 +5,7 @@ import seaborn as sns
 
 from pysubsurface.utils.utils import findclosest
 from pysubsurface.objects.utils import _findclosest_well_seismicsections
-from pysubsurface.objects.Seismic import _extract_arbitrary_path
+from pysubsurface.objects.seismic import _extract_arbitrary_path
 from pysubsurface.proc.seismicmod.avo import _methods
 from pysubsurface.proc.seismicmod.avo import *
 

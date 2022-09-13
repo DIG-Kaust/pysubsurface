@@ -9,16 +9,9 @@ import matplotlib.pyplot as plt
 import segyio
 import pysubsurface
 
-from azure.datalake.store import multithread
-from segyio.tracefield import TraceField as stf
 from pysubsurface.utils.utils import findclosest
-from pysubsurface.objects.utils import _a2e, _e2a
 from pysubsurface.objects.utils import _findclosest_well_seismicsections
-from pysubsurface.objects.Cube import Cube
-from pysubsurface.objects.Seismic import Seismic
-
-from pysubsurface.proc.seismicmod.waveletest import statistical_wavelet
-from pysubsurface.visual.utils import plot_polygon
+from pysubsurface.objects.seismic import Seismic
 
 logging.basicConfig(level=logging.WARNING)
 

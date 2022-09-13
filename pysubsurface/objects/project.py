@@ -17,17 +17,17 @@ from distutils.dir_util import copy_tree
 from deprecated import deprecated
 from pysubsurface.utils.utils import change_name_for_unix
 from pysubsurface.utils.stats import average_stats
-from pysubsurface.objects.Intervals import Intervals
-from pysubsurface.objects.Picks import Picks
-from pysubsurface.objects.Well import Well
-from pysubsurface.objects.Polygon import Polygon
-from pysubsurface.objects.PolygonSet import PolygonSet
+from pysubsurface.objects.intervals import Intervals
+from pysubsurface.objects.picks import Picks
+from pysubsurface.objects.well import Well
+from pysubsurface.objects.polygon import Polygon
+from pysubsurface.objects.polygonset import PolygonSet
 from pysubsurface.objects.interpretation import Interpretation, Ensemble
-from pysubsurface.objects.Seismic import Seismic
-from pysubsurface.objects.SeismicIrregular import SeismicIrregular
-from pysubsurface.objects.PrestackSeismic import PrestackSeismic
-from pysubsurface.objects.Fault import Fault
-from pysubsurface.objects.Facies import Facies
+from pysubsurface.objects.seismic import Seismic
+from pysubsurface.objects.seismicirregular import SeismicIrregular
+from pysubsurface.objects.prestackseismic import PrestackSeismic
+from pysubsurface.objects.fault import Fault
+from pysubsurface.objects.facies import Facies
 
 from pysubsurface.visual.utils import _discrete_cmap, \
     _pie_in_axes, _seismic_polarity

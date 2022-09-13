@@ -6,7 +6,7 @@ import numpy.ma as np_ma
 import matplotlib.pyplot as plt
 
 from pysubsurface.utils.utils import findclosest
-from pysubsurface.objects.Surface import Surface, _FORMATS
+from pysubsurface.objects.surface import Surface, _FORMATS
 
 
 plt.rc('font', family='serif')

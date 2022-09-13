@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from functools import wraps
-from scipy.signal import convolve, fftconvolve
+from scipy.signal import fftconvolve
 
 from pysubsurface.proc.rockphysics.elastic import backus
 from pysubsurface.visual.utils import _wiggletracecomb

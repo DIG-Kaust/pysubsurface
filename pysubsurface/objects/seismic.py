@@ -1,6 +1,5 @@
 import logging
 
-import os
 import copy
 from shutil import copyfile
 import warnings
@@ -15,10 +14,9 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from segyio.tracefield import TraceField as stf
 from pysubsurface.utils.utils import findclosest
 
-from pysubsurface.objects.utils import _a2e, _e2a
+from pysubsurface.objects.utils import _a2e
 from pysubsurface.objects.utils import _findclosest_point, _findclosest_well_seismicsections
-from pysubsurface.objects.Cube import Cube
-from pysubsurface.objects.Surface import Surface
+from pysubsurface.objects.cube import Cube
 from pysubsurface.proc.seismicmod.waveletest import statistical_wavelet
 from pysubsurface.visual.utils import plot_polygon
 

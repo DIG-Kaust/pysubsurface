@@ -1,5 +1,3 @@
-import logging
-import os
 import copy
 import warnings
 
@@ -15,7 +13,6 @@ from scipy.interpolate import RegularGridInterpolator
 from matplotlib.colors import Normalize
 from matplotlib_scalebar.scalebar import ScaleBar
 
-from azure.datalake.store import multithread
 from pysubsurface.objects.utils import _findclosest_point_surface
 from pysubsurface.visual.utils import _set_black
 

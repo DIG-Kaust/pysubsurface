@@ -2,7 +2,7 @@ import logging
 
 import numpy as np
 from pysubsurface.utils.utils import findclosest
-from pysubsurface.objects.Logs import _filters_curves
+from pysubsurface.objects.logs import _filters_curves
 
 
 try:

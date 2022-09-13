@@ -1,5 +1,4 @@
 import numpy as np
-import numpy as np
 import segyio
 
 from pysubsurface.utils.utils import findclosest_scatter
