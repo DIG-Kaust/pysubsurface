@@ -17,3 +17,4 @@ from .tdcurve import TDcurve
 from .polygon import Polygon
 from .polygonset import PolygonSet
 from .facies import Facies
+from .rawseismic import RawSeismic
