@@ -2063,7 +2063,7 @@ class Well:
                                            tzshift=tzshift, addlines=False,
                                            usevertices=True, jumplabel=20,
                                            ax=ax, **kwargs_seismic)
-
+        """
         # extract time curve and interpolate il and xl to time axis
         if domain == 'time':
             try:
@@ -2074,9 +2074,10 @@ class Well:
                 except:
                     raise ValueError('twtcurve is not present in Well object')
 
+            print(trajmd.shape, ilwellunique.shape)
             fil = interp1d(trajmd, ilwellunique,
-                         kind='linear',
-                         bounds_error=False, assume_sorted=True)
+                           kind='linear',
+                           bounds_error=False, assume_sorted=True)
             ilwell = fil(wellcurve['Md (meters)'])
             fxl = interp1d(trajmd, xlwellunique,
                            kind='linear',
@@ -2134,7 +2135,7 @@ class Well:
                     else 1.01 * xlwell_text,
                     0.9 * max(traj_z_text, ax.get_ylim()[1]), self.wellname, va="center", color=color,
                     bbox=dict(boxstyle="round", fc=(1., 1., 1.), ec=color))
-
+        
         # plot log curve
         if logcurve is not None:
             self.welllogs.visualize_logcurve(curve=logcurve,
@@ -2153,7 +2154,7 @@ class Well:
                                              xlabelpos=None,
                                              inverty=False,
                                              ax=ax)
-
+        
         # plot picks and contacts
         if picks and self.intervals is not None:
             if domain == 'depth':
@@ -2183,45 +2184,7 @@ class Well:
                     ax.plot(traj_x_interp[iclosest],
                             float(contact[contactdepth]) + logcurveshift, marker='_',
                             color=contact['Color'], ms=20, mew=8)
-
-        # plot well perforations and completions
-        if self.perforations is not None:
-            for perforation in self.perforations.perforations:
-                istart = findclosest(traj_z,
-                                     perforation.iloc[0]['TVDSS'])
-                iend = findclosest(traj_z,
-                                   perforation.iloc[-1]['TVDSS'])
-                # expand perforation by one/two trajectory elements to allow visualization
-                if istart == iend:
-                    iend += 2
-                elif istart + 1 == iend:
-                    iend += 1
-                ax.plot(ilwellunique[istart:iend]
-                        if not vertical or which == 'xl'
-                        else xlwellunique[istart:iend],
-                        traj_z[istart:iend], 'k', lw=22)
-                ax.plot(ilwellunique[istart:iend]
-                        if not vertical or which == 'xl'
-                        else xlwellunique[istart:iend],
-                        traj_z[istart:iend], 'w', lw=20)
-
-        if self.completions is not None:
-            for icomp, completion in enumerate(self.completions.completions):
-                istart = findclosest(traj_z,
-                                     completion.iloc[0]['TVDSS'])
-                iend = findclosest(traj_z,
-                                   completion.iloc[-1]['TVDSS'])
-                # expand completion by one/two trajectory elements to allow visualization
-                if istart == iend:
-                    iend += 2
-                elif istart + 1 == iend:
-                    iend += 1
-                c, lw = _completions[
-                    self.completions.df.iloc[icomp]['symbol_name']]
-                ax.plot(ilwellunique[istart:iend]
-                        if not vertical or which == 'xl'
-                        else xlwellunique[istart:iend],
-                        traj_z[istart:iend], c=c, lw=2 * lw)
+        """
 
         # add surface and line along which seismic is displayed
         if surface is not None:

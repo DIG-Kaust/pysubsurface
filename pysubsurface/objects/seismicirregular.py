@@ -501,8 +501,6 @@ class SeismicIrregular(Seismic):
         slice = slice[iil[traces_available],
                       ixl[traces_available]]
 
-        print(slice.shape, self.cdpx[::subsample])
-
         if len(clim) == 0:
             clim = [-clip * np.nanmax(np.abs(slice)),
                     clip * np.nanmax(np.abs(slice))]

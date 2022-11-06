@@ -58,8 +58,8 @@ class Project:
     a :class:`pysubsurface.objects.Interval` object, a :class:`pysubsurface.objects.Picks`
     object, a list of a :class:`pysubsurface.objects.Well` objects, a list of
     :class:`pysubsurface.objects.Seismic` and/or a
-    :class:`pysubsurface.objects.SeismicIrregular`objects, a lists of
-    :class:`pysubsurface.objects.Interpretation' objects (containing various sets of
+    :class:`pysubsurface.objects.SeismicIrregular` objects, a lists of
+    :class:`pysubsurface.objects.Interpretation` objects (containing various sets of
     :class:`pysubsurface.objects.Surface` objects
     representing a unique interpretation), and a list of
     :class:`pysubsurface.objects.Surface` objects containing generic surfaces
