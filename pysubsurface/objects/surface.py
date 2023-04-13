@@ -316,7 +316,7 @@ class Surface:
          Fill surface using previously computed grid (``True``)
          or compute grid from x-y and/or il-xl in the input file (``False``).
          The option ``fillsurface=True`` can be used in combination with
-         :func:`ptc.objects.Surface.copy` when another surface with the same
+         :func:`pysubsurface.objects.Surface.copy` when another surface with the same
          geometry has been already read. It is user responsability to use this
          option wisely.
     mastersurface : :obj:`pysubsurface.objects.Surface`, optional

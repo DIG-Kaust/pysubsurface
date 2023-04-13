@@ -93,9 +93,6 @@ class Project:
         Name of project
     figdir : :obj:`str`, optional
         Directory where figures are stored locally
-    docfigdir : :obj:`str`, optional
-        Directory in PTCdoc folder where local figures are re-mapped by running
-        :func:`pysubsurface.objects.Project.mapdocfigs`
     warnings : :obj:`bool`, optional
         Display warnings
     verb : :obj:`bool`, optional
@@ -103,7 +100,7 @@ class Project:
 
     """
     def __init__(self, kind='local', projectsetup=None,
-                 projectdir=None, projectname=None, figdir='.', docfigdir=None,
+                 projectdir=None, projectname=None, figdir='.',
                  warnings=False, verb=False):
         if warnings:
             logging.getLogger().setLevel(logging.WARNING)
@@ -118,7 +115,6 @@ class Project:
             self.projectdir = projectdir
             self.projectname = projectname
             self.figdir = figdir
-            self.docfigdir = docfigdir
         else:
             raise NotImplementedError('kind must be local...')
 
@@ -127,9 +123,6 @@ class Project:
         # create local figure directory
         if not os.path.exists(self.figdir):
             os.makedirs(self.figdir)
-        if self.docfigdir is not None:
-            if not os.path.exists(self.docfigdir):
-                os.makedirs(self.docfigdir)
 
         # create interval object
         self.intervals = Intervals(kind=self._kind)
@@ -1040,21 +1033,6 @@ class Project:
             self.aveprops[avename] = {'filters': filter, 'aveprops': aveprops}
         return aveprops
 
-    def mapdocfigs(self, verb=False):
-        """Map figures from local directory to documentation directory
-
-        Parameters
-        ----------
-        verb : :obj:`bool`, optional
-            Verbosity
-
-        """
-        if self.docfigdir is not None:
-            if verb:
-                print('Copying figures from {} to {}'.format(self.figdir,
-                                                             self.docfigdir))
-            copy_tree(self.figdir, self.docfigdir)
-
     #########
     # Viewers
     #########
@@ -1815,7 +1793,7 @@ class Project:
 
         # savefig
         if savefig:
-            figpath = _create_figpath(self.figdir, os.path.join('wellplanning',
+            figpath = _create_figpath(self.figdir, os.path.join('wells',
                                                                 change_name_for_unix(wellname)))
             fig.savefig(os.path.join(figpath, change_name_for_unix(wellname) +
                                      '_overview.png'),
