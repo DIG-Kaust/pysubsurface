@@ -56,7 +56,7 @@ def _segyinfo(filename, iline=189, xline=193, level=2):
         if level > 0:
             print('\nList of headerwords with min and max values:')
             for head in heads:
-                tmp = segyfile.attributes(segyio.TraceField(head))[:]
+                tmp = segyfile.attributes(int(segyio.TraceField(head)))[:]
                 print('{0: <45}: {1} - {2}'.format(str(segyio.TraceField(head)),
                                                    np.min(tmp), np.max(tmp)))
 
