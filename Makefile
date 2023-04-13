@@ -31,3 +31,6 @@ doc:
 
 docupdate:
 	cd docs && make html && cd ..
+
+servedoc:
+	$(PYTHON) -m http.server --directory docs/build/html/

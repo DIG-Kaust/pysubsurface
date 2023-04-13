@@ -244,7 +244,7 @@ class Project:
                 self.wells[rename].create_contacts()
 
                 # add intervals
-                if len(self.wells[rename].picks.df) > 0:
+                if len(self.wells[rename].picks.df) > 0 and len(self.intervals.df) > 0:
                     self.wells[rename].create_intervals(self.intervals)
                 else:
                     self.wells[rename].intervals = None

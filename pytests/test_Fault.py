@@ -33,6 +33,7 @@ def test_grid():
     # clean up
     plt.close('all')
 
+
 #def test_display():
 #    """Display fault
 #    """

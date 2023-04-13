@@ -52,6 +52,9 @@ Data Processing (Enrichment)
     poststack.timeshift
     avo.prestack_mod
     avo.prestack_wellmod
+    waveletest.statistical_wavelet
+    welltie.welltie
+    welltie.welltie_shift_finder
 
 .. currentmodule:: pysubsurface.proc.uncertainty.uncertainty
 
@@ -59,16 +62,27 @@ Data Processing (Enrichment)
    :toctree: generated/
 
    ava_modelling_sensitivity
-
+   welllogs_ava_sensitivity
+   
 **Rock physics**
 
-.. currentmodule:: pysubsurface.proc.rockphysics.elastic
+.. currentmodule:: pysubsurface.proc.rockphysics
 
 .. autosummary::
    :toctree: generated/
 
-   backus
-
+   bounds.voigt_bound
+   bounds.reuss_bound
+   bounds.voigt_reuss_hill_average
+   bounds.hashin_shtrikman
+   elastic.backus
+   fluid.Brine
+   fluid.Gas
+   fluid.Oil
+   fluid.Fluid
+   solid.Matrix
+   solid.Rock
+   gassmann.Gassmann
 
 **Geomodelling**
 
@@ -89,11 +103,13 @@ Visualizations
 .. autosummary::
    :toctree: generated/
 
-    combinedviews.scatter_well
+    combinedviews.ava_modelling
+    combinedviews.categorical_statistics
+    combinedviews.correlation_panel
     combinedviews.intervals_on_map
+    combinedviews.scatter_well
     combinedviews.seismic_and_map
     combinedviews.seismic_through_wells
-    combinedviews.ava_modelling
 
 
 Developer
