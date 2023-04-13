@@ -1,6 +1,8 @@
 # PySubsurface
 A light-weight Python library containing a bag of useful objects to load, manipulate, and visualize subsurface data. 
 
+[![PySubsurface-tests](https://github.com/DIG-Kaust/pysubsurface/actions/workflows/build.yaml/badge.svg)](https://github.com/DIG-Kaust/pysubsurface/actions/workflows/build.yaml)
+
 ## Objective
 This library aims at creating a high level, easy to use API which spans the entire suite of data types used in 
 subsurface projects (i.e., well logs and picks, seismic data, surfaces, grids etc.) and provide standardized loading, 
