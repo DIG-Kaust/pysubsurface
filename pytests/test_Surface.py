@@ -3,7 +3,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-from pysubsurface.objects.Surface import Surface, SurfacePair
+from pysubsurface.objects import Surface, SurfacePair
 
 surfacefile = 'testdata/Surface/dsg5_long.txt'
 
@@ -113,6 +113,7 @@ def test_view_surfaces(par):
     # clean up
     plt.close('all')
     os.remove('testfigs/surface_test{}.png'.format(par['label']))
+
 
 """
 @pytest.mark.parametrize("par", [(par1), (par2), (par3), (par4), (par5)])

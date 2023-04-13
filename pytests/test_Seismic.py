@@ -6,9 +6,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from numpy.testing import assert_equal, assert_almost_equal
-from pysubsurface.objects.Well import Well
-from pysubsurface.objects.Surface import Surface
-from pysubsurface.objects.Seismic import Seismic
+from pysubsurface.objects import Well
+from pysubsurface.objects import Surface
+from pysubsurface.objects import Seismic
 
 
 segyfile = 'testdata/Seismic3d/poststack.sgy'

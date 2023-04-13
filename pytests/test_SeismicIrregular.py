@@ -5,8 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from numpy.testing import assert_equal
-from pysubsurface.objects.Surface import Surface
-from pysubsurface.objects.SeismicIrregular import SeismicIrregular
+from pysubsurface.objects import Surface
+from pysubsurface.objects import SeismicIrregular
 
 
 segyfile = 'testdata/Seismic3d/poststack.sgy'

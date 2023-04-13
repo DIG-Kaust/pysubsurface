@@ -42,13 +42,13 @@ def test_select_interpreters():
     """
     # select one interpreter
     picks = Picks(picksfile)
-    picks.select_interpreters('STAT')
+    picks.select_interpreters('OPEN')
 
     assert picks.df.shape[0] == 5
 
     # select two interpreter
     picks = Picks(picksfile)
-    picks.select_interpreters(('STAT', 'US1'))
+    picks.select_interpreters(('OPEN', 'US1'))
 
     assert picks.df.shape[0] == 6
 
@@ -73,7 +73,7 @@ def test_assign_color():
     """
     picks = Picks(picksfile)
     picks.assign_color('Seabed', 'r')
-    picks_color = list(picks.df[picks.df['Name']=='Seabed']['Color'])
+    picks_color = list(picks.df[picks.df['Name'] == 'Seabed']['Color'])
 
     assert picks_color == ['r']*len(picks_color)
 
