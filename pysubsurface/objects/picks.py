@@ -284,7 +284,7 @@ class Picks:
             clrs = ['grey']*len(picks_count)
             clrs[0] = 'red'
             fig, ax = plt.subplots(1, 1, figsize=(9, 15))
-            sns.barplot(picks_count.values, picks_count.index, palette=clrs)
+            sns.barplot(picks_count, palette=clrs)
             ax.set_title('' if title is None else title,
                          fontsize=14, fontweight='bold')
             plt.tight_layout()
