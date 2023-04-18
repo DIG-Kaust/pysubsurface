@@ -13,7 +13,7 @@ Deep Imaging Group. However, we always welcome feedback and external contributio
 
 ## Project structure
 This repository is organized as follows:
-* :open_file_folder: **pysubsurface**:    python library containing various classes and functions for handling and visualization of PETEC data
+* :open_file_folder: **pysubsurface**:    python library containing various classes and functions for handling and visualization of subsurface data
 * :open_file_folder: **pytests**:         set of pytests for main functions of the pysubsurface library
 * :open_file_folder: **testdata**:        data used in various tests and notebooks
 * :open_file_folder: **docs**:            files containing sphinx documentation
